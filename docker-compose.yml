@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  tfg.products.api:
+    image: ${DOCKER_REGISTRY-}tfgproductsapi
+    build:
+      context: .
+      dockerfile: src/TFG.Products.Api/Dockerfile
+
+
+  tfg.products.sqlserver:
+    image: mcr.microsoft.com/mssql/server:${SQL_TAG:-2019-CU12-ubuntu-20.04}
+    container_name: tfg-products-sqlserver
