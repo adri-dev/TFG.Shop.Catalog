@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TFG.Products.Application.Commands.AddProductToCategory;
 using TFG.Products.Application.Queries.GetProductsByCategory;
 
 namespace TFG.Products.Api.Controllers
@@ -24,12 +25,12 @@ namespace TFG.Products.Api.Controllers
             return Ok(response);
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult> CreateCategory(CreateCategoryRequest request)
-        //{
-        //    var response = await _mediator.Send(request);
+        [HttpPost]
+        public async Task<ActionResult> AddProductToCategory(AddProductToCategoryRequest request)
+        {
+            var response = await _mediator.Send(request);
 
-
-        //}
+            return Created("", new { Id = response });
+        }
     }
 }
