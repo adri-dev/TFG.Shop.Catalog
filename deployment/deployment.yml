@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-dply
+spec:
+  selector:
+    matchLabels:
+      app: products
+      tier: backend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: products
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: products
+          image: docker.io/wadrydev/tfgproducts
+          env:
+          - name: ConnectionStrings__ProductsDb
+            value: Data Source=host.minikube.internal,5444;Initial Catalog=TFG.Products;User ID=sa;Password=Pass@word!;TrustServerCertificate=True
+          ports:
+            - name: http
+              containerPort: 80
