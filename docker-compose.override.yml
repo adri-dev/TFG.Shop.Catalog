@@ -22,7 +22,7 @@ services:
       - SA_USER=${SA_USER:-sa}
       - ACCEPT_EULA=Y
     ports:
-      - "5446:1433"
+      - "5444:1433"
     volumes:
       - ./config/sql:/var/opt/mssql/data
     networks:
