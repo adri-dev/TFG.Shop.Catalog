@@ -17,5 +17,15 @@ namespace TFG.Products.Infrastructure.Extensions
                 .AddScoped<IProductReadOnlyRepository, ProductRepository>()
                 .AddScoped<IProductRepository, ProductRepository>();
         }
+
+
+        public static void ApplyMigrations(this IServiceProvider serviceProvider)
+        {
+            using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<ProductsDbContext>();
+                context.Database.Migrate();
+            }
+        }
     }
 }
