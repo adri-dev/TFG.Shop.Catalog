@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: catalog
-          image: docker.io/wadrydev/tfgproducts
+          image: docker.io/wadrydev/tfgcatalog
           env:
           - name: ConnectionStrings__ProductsDb
             value: Data Source=host.minikube.internal,5444;Initial Catalog=TFG.Catalog;User ID=sa;Password=Pass@word!;TrustServerCertificate=True
