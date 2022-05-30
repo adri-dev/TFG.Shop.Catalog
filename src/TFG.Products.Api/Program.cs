@@ -33,5 +33,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Services.ApplyMigrations();
+app.Services.SeedDatabase();
 
 app.Run();

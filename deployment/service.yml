@@ -1,11 +1,11 @@
 apiVersion: v1
-kind: Service
+kind: Service # Kind of Kubernetes object
 metadata:
-  name: tfgcatalog-svc
+  name: tfgcatalog-svc # Name of service
 spec:
   selector:
-    app: catalog
+    app: catalog # This is the selector that we will use to link to pods
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: http
+  - protocol: TCP # Protocol necessary to access to Service
+    port: 80 # Internal Port Number
+    targetPort: http # Target port of Container

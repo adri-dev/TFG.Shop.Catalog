@@ -1,25 +1,25 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment # Kind of Kubernetes object
 metadata:
-  name: catalog-dply
+  name: catalog-dply # Name of deployment
   labels:
-    app: catalog
+    app: catalog # Labels of deployment
 spec:
   selector:
     matchLabels:
-      app: catalog
-  replicas: 1
+      app: catalog # selector to link with pods
+  replicas: 1 # Number of replicas
   template:
     metadata:
       labels:
-        app: catalog
+        app: catalog # labels for pod that will create
     spec:
       containers:
-        - name: catalog
-          image: docker.io/wadrydev/tfgcatalog
-          env:
+        - name: catalog # Name of container
+          image: docker.io/wadrydev/tfgcatalog # url of docker image
+          env: #List of environament variables for the container
           - name: ConnectionStrings__ProductsDb
             value: Data Source=host.minikube.internal,5444;Initial Catalog=TFG.Catalog;User ID=sa;Password=Pass@word!;TrustServerCertificate=True
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 80 # ports that will be exposed from container
